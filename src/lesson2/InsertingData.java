@@ -49,9 +49,8 @@ public class InsertingData {
         } catch (SQLException | RuntimeException | ParseException e) {
             System.out.println(e.getMessage());
         } finally {
-            if (conn != null) {
-                conn.close();
-            }
+            ConnectionDB.closeConnection();
+            ConnectionDB.closeStatement(st);
         }
     }
 }
