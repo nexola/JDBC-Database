@@ -1,21 +1,21 @@
 package lesson3;
 
-import lesson1.ConnectionDB;
+import db.DB;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class UpdateData {
+public class UpdatingData {
 
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) {
 
         Connection conn = null;
         PreparedStatement ps = null;
 
         try {
 
-            conn = ConnectionDB.cDB();
+            conn = DB.cDB();
 
             ps = conn.prepareStatement(
                     "UPDATE seller " // Atualize a tabela seller
@@ -33,8 +33,8 @@ public class UpdateData {
         } catch (SQLException | RuntimeException e) {
             System.out.println(e.getMessage());
         } finally {
-            ConnectionDB.closeConnection();
-            ConnectionDB.closeStatement(ps);
+            DB.closeConnection();
+            DB.closeStatement(ps);
         }
     }
 }

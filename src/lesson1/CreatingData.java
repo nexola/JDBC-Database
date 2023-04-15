@@ -1,14 +1,14 @@
-package lesson2;
+package lesson1;
 
-import lesson1.ConnectionDB;
+import db.DB;
 
 import java.sql.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-public class InsertingData {
+public class CreatingData {
 
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) {
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
@@ -16,7 +16,7 @@ public class InsertingData {
         PreparedStatement st = null;
 
         try {
-            conn = ConnectionDB.cDB();
+            conn = DB.cDB();
 
             // Inserindo dados no database
             st = conn.prepareStatement(
@@ -49,8 +49,8 @@ public class InsertingData {
         } catch (SQLException | RuntimeException | ParseException e) {
             System.out.println(e.getMessage());
         } finally {
-            ConnectionDB.closeConnection();
-            ConnectionDB.closeStatement(st);
+            DB.closeConnection();
+            DB.closeStatement(st);
         }
     }
 }

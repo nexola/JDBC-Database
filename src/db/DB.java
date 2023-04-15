@@ -1,8 +1,8 @@
-package lesson1;
+package db;
 
 import java.sql.*;
 
-public class ConnectionDB {
+public class DB {
 
     private static Connection conn = null;
 

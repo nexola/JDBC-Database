@@ -1,21 +1,21 @@
-package lesson1;
+package lesson2;
 
-import lesson1.ConnectionDB;
+import db.DB;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class Main {
-    public static void main(String[] args) throws SQLException {
+public class ReadingData {
+    public static void main(String[] args) {
 
         Connection conn = null;
         Statement st = null;
         ResultSet rs = null;
 
         try {
-            conn = ConnectionDB.cDB();
+            conn = DB.cDB();
 
             st = conn.createStatement();
 
@@ -29,9 +29,9 @@ public class Main {
             System.out.println(e.getMessage());
         }
         finally {
-            ConnectionDB.closeStatement(st);
-            ConnectionDB.closeResultSet(rs);
-            ConnectionDB.closeConnection();
+            DB.closeStatement(st);
+            DB.closeResultSet(rs);
+            DB.closeConnection();
         }
 
     }
